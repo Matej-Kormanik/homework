@@ -1,10 +1,9 @@
 package cz.avast.kormanik.homework.controller;
 
-import cz.avast.kormanik.homework.service.IPointInTimeService;
 import cz.avast.kormanik.homework.service.PointInTimeService;
-import cz.avast.kormanik.homework.to.CoordinateTO;
 import cz.avast.kormanik.homework.to.PersonCoordinatesTO;
 import cz.avast.kormanik.homework.to.TimeTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @RestController
 @RequestMapping("/v1")
 public class Controller {
 
-    private final IPointInTimeService pointInTimeService;
+    private PointInTimeService pointInTimeService;
 
     @Autowired
     public Controller(PointInTimeService pointInTimeService) {
@@ -35,8 +35,11 @@ public class Controller {
 
     @GetMapping("/VIP/{pointInTime}")
     public ResponseEntity<PersonCoordinatesTO> personCoordinates(@PathVariable final Integer pointInTime) {
-        CoordinateTO coordinate = pointInTimeService.getPointInTimeCords(pointInTime);
-        return null;
+        PersonCoordinatesTO coordinate = pointInTimeService.getPointInTimeCords(pointInTime);
+        if (coordinate == null) {
+            return null;
+        }
+        return ResponseEntity.ok(coordinate);
     }
 
 }
