@@ -36,6 +36,7 @@ public class PointInTimeServiceImpl implements PointInTimeService {
             return new PersonCoordinatesTO(SOURCE, coordinate.getBody());
         } catch (ResourceAccessException e) {
             log.error("Getting a resource from {} took too long", url);
+            e.printStackTrace();
             throw new ResourceAccessException(format("Getting a resource from %s took too long", url));
         } catch (Exception e) {
             log.error("Could not fetch resource for {}", url);

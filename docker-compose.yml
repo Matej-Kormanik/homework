@@ -1,4 +1,9 @@
 version: '3'
+
+networks:
+  homework-network:
+    driver: bridge
+
 services:
   clusterf-proxy:
     image: andymacdonald/clusterf-chaos-proxy
@@ -29,8 +34,3 @@ services:
       - homework-network
     depends_on:
       - clusterf-proxy
-
-
-networks:
-  homework-network:
-
