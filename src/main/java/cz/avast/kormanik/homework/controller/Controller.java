@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/v1")
 public class Controller {
 
-    private PointInTimeService pointInTimeService;
+    private final PointInTimeService pointInTimeService;
 
     @Autowired
     public Controller(PointInTimeService pointInTimeService) {
@@ -32,9 +32,9 @@ public class Controller {
         return ResponseEntity.ok(time);
     }
 
-
     @GetMapping("/VIP/{pointInTime}")
     public ResponseEntity<PersonCoordinatesTO> personCoordinates(@PathVariable final Integer pointInTime) {
+
         PersonCoordinatesTO coordinate = pointInTimeService.getPointInTimeCords(pointInTime);
         if (coordinate == null) {
             return null;
