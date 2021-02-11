@@ -16,7 +16,4 @@ public class PersonCoordinatesTO {
 
     private CoordinateTO gpsCoords;
 
-
-    public PersonCoordinatesTO() {
-    }
 }

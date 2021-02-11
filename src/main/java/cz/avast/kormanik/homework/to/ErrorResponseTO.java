@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * Error http response object.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,6 +18,5 @@ public class ErrorResponseTO {
     private String status;
     private LocalDateTime time;
 
-    public ErrorResponseTO() {
-    }
+
 }

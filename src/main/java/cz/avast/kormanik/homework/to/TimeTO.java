@@ -1,21 +1,16 @@
 package cz.avast.kormanik.homework.to;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class TimeTO {
 
     private LocalDateTime now;
-
-    public TimeTO(LocalDateTime now) {
-        this.now = now;
-    }
-
-    public LocalDateTime getNow() {
-        return now;
-    }
-
-    public void setNow(LocalDateTime now) {
-        this.now = now;
-    }
 
 }
