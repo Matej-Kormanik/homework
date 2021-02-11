@@ -8,8 +8,26 @@ services:
       JAVA_OPTS: "-Dchaos.strategy=RANDOM_HAVOC -Ddestination.hostProtocolAndPort=http://database:3100 -Dchaos.strategy.delayResponse.random.maxSeconds=10"
     ports:
       - "8088:8080"
+#    networks:
+#      - homework-network
+
 
   database:
     image: mitchallen/random-server
     expose:
     - 3100
+
+#  homework:
+#    build: .
+#    container_name: homework
+#    ports:
+#      - "8080:8080"
+
+
+
+#    networks:
+#      - homework-network
+#
+#
+#networks:
+#  homework-network:

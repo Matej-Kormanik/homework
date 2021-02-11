@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@Slf4j
+/** Controller for handling web requests. */
 @RestController
 @RequestMapping("/v1")
 public class Controller {
@@ -25,17 +25,26 @@ public class Controller {
         this.pointInTimeService = pointInTimeService;
     }
 
-
+    /**
+     * Gives back current date and time.
+     * @return Current date-time wrapped by ResponseEntity.
+     */
     @GetMapping("/now")
     public ResponseEntity<TimeTO> currentTime() {
         TimeTO time = new TimeTO(LocalDateTime.now());
         return ResponseEntity.ok(time);
     }
 
+    /**
+     * Gets gps coordinates for given point-in-time fetched from external service.
+     *
+     * @param pointInTime point-in-time represented as Integer.
+     * @return {@link PersonCoordinatesTO} object for given point-in-time.
+     */
     @GetMapping("/VIP/{pointInTime}")
     public ResponseEntity<PersonCoordinatesTO> personCoordinates(@PathVariable final Integer pointInTime) {
 
-        PersonCoordinatesTO coordinate = pointInTimeService.getPointInTimeCords(pointInTime);
+        PersonCoordinatesTO coordinate = pointInTimeService.getPointInTimeGps(pointInTime);
         if (coordinate == null) {
             return null;
         }

@@ -23,7 +23,8 @@ public class AppConfig {
 
 
     /**
-     * Configures timeouts for rest template.
+     * Configures a timeout for rest template.
+     *
      * @return clientHttpRequestFactory object.
      */
     @Bean

@@ -13,9 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import static java.lang.String.format;
 
-/**
- *
- */
+/** Implementation of {@link PointInTimeService}. */
 @Slf4j
 @Service
 public class PointInTimeServiceImpl implements PointInTimeService {
@@ -25,12 +23,12 @@ public class PointInTimeServiceImpl implements PointInTimeService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${cord.api.url}")
+    @Value("${api.url}")
     private String cordApiUrl;
 
 
     @Override
-    public PersonCoordinatesTO getPointInTimeCords(final Integer pointInTime) {
+    public PersonCoordinatesTO getPointInTimeGps(final Integer pointInTime) {
         final String url = cordApiUrl + pointInTime;
         log.info("Sending request to {}", url);
         try {
